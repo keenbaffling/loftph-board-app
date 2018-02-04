@@ -1,0 +1,388 @@
+html {
+  font-size: 10px;
+}
+
+@media (min-width: 100em) {
+  html {
+    font-size: 12.5px;
+  }
+}
+
+@media (min-width: 120em) {
+  html {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 128em) {
+  html {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 240em) {
+  html {
+    font-size: 30px;
+  }
+}
+
+body {
+  background-color: #eee;
+  color: #464646;
+  font-family: "Gotham Book", sans-serif;
+  text-rendering: optimizeLegibility;
+  font-size: 1.6rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Gotham", sans-serif;
+}
+
+h2 {
+  font-size: 3.8rem;
+}
+
+h3 {
+  font-size: 3rem;
+}
+
+h4 {
+  font-size: 2rem;
+  font-family: "Gotham Book", sans-serif;
+  font-weight: 600;
+}
+
+p {
+  font-family: 1.8rem;
+}
+
+
+/* START Utils */
+
+.text-unset {
+  text-transform: unset !important;
+}
+
+
+/* END Utils */
+
+
+/* START Block */
+
+.block {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.block--top {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-flow: column wrap;
+  -ms-flex-flow: column wrap;
+  flex-flow: column wrap;
+  height: 100vh;
+  position: relative;
+  width: 100%;
+}
+
+.block--bottom {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-image: url(../../assets/images/bg-abstract-blue.jpg);
+  bottom: 0;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-flow: column wrap;
+  -ms-flex-flow: column wrap;
+  flex-flow: column wrap;
+  left: 0;
+  position: absolute;
+  right: 0;
+}
+
+@media (min-width: 48em) {
+  .block--bottom {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-flow: row wrap;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+    height: 12rem;
+  }
+}
+
+.block__content {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 100%;
+  -webkit-flex: 100%;
+  -ms-flex: 100%;
+  flex: 100%;
+}
+
+.block__content--2 {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 -webkit-calc(100vh - 12rem);
+  -ms-flex: 0 0 calc(100vh - 12rem);
+  flex: 0 0 calc(100vh - 12rem);
+}
+
+
+/* END Block */
+
+
+/* START Status */
+
+.status {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: 1.5rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.status__heading {
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status__content {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.status__item {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #fff;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 50%;
+  -webkit-flex: 50%;
+  -ms-flex: 50%;
+  flex: 50%;
+  margin-bottom: .5rem;
+  vertical-align: middle;
+}
+
+.status__item-label {
+  display: inline-block;
+}
+
+.status__item-count {
+  background-color: #67c039;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  display: inline-block;
+  font-family: "Gotham", san-serif;
+  font-weight: 500;
+  height: 2.4rem;
+  line-height: 2.4rem;
+  margin: 0 1.25rem;
+  text-align: center;
+  width: 2.4rem;
+}
+
+
+/* END Status */
+
+
+/* START InSpace */
+
+.avatar {
+  height: 4.2rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.avatar__item {
+  display: inline-block;
+  margin: 0 .8rem;
+}
+
+.avatar__item-img {
+  border: .25rem solid #fff;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  width: 4.2rem;
+}
+
+
+/* END InSpace */
+
+
+/* START Slack */
+
+.slack--wrap {
+  background-color: #fff;
+  overflow: scroll;
+}
+
+.slack__wrap {
+  display: flex;
+  padding: 1rem 0;
+}
+
+.slack__gutter {
+  padding-right: 1.5rem;
+  text-align: right;
+  width: 10rem;
+}
+
+.slack__avatar {
+  display: inline-block;
+  height: 4.8rem;
+  position: relative;
+  width: 4.8rem;
+}
+
+.slac__avatar-img {
+  height: 100%;
+  width: 100%;
+}
+
+/* END Slack */
+
+
+/* START News */
+
+.news--wrap {
+  -webkit-align-content: center;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  background-image: url(../../assets/images/bg-border.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.news__header {
+  margin-bottom: 1.5rem;
+}
+
+.news__heading {
+  font-size: 2.8rem;
+}
+
+.news__overlay {
+  background-position: center;
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+}
+
+.news__item {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #fff;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 2.4rem;
+  margin-bottom: 2rem;
+  padding: 2.5rem 5rem;
+}
+
+.news__item:last-child {
+  margin-bottom: 0;
+}
+
+.news__sched {
+  text-align: center;
+}
+
+.news__month {
+  text-transform: uppercase;
+}
+
+.news__day {
+  font-family: "Gotham", sans-serif;
+  font-size: 4rem;
+  line-height: 1;
+}
+
+.news__meta {
+  color: #898989;
+}
+
+.news__content {
+  margin-left: 2rem;
+  width: 100%;
+}
+
+.news__title {
+  font-size: 2.4rem;
+}
+
+.news__item--bg {
+  -webkit-background-size: cover;
+  background-size: cover;
+  color: #fff;
+  min-height: 30rem;
+  padding: 2.5rem 1.5rem;
+}
+
+.news__item--shadow {
+  /* box-shadow: 0 .1rem .2rem 0 rgba(0, 0, 0, 0.2); */
+}
+
+
+/* END News */
