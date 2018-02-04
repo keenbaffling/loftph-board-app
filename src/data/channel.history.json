@@ -1,0 +1,590 @@
+{
+  "ok": true,
+  "messages": [
+    {
+      "type": "message",
+      "subtype": "file_share",
+      "text":
+        "<@U1B8JT6V6> uploaded a file: <https://loftph.slack.com/files/U1B8JT6V6/F8S833K41/messages_image_1172068937_.png|Earn Your> and commented: Thanks <@U1B7TDK7E>",
+      "file": {
+        "id": "F8S833K41",
+        "created": 1515999680,
+        "timestamp": 1515999680,
+        "name": "Messages Image(1172068937).png",
+        "title": "Earn Your",
+        "mimetype": "image/png",
+        "filetype": "png",
+        "pretty_type": "PNG",
+        "user": "U1B8JT6V6",
+        "editable": false,
+        "size": 1658799,
+        "mode": "hosted",
+        "is_external": false,
+        "external_type": "",
+        "is_public": true,
+        "public_url_shared": false,
+        "display_as_bot": false,
+        "username": "",
+        "url_private":
+          "https://files.slack.com/files-pri/T1B6JK89H-F8S833K41/messages_image_1172068937_.png",
+        "url_private_download":
+          "https://files.slack.com/files-pri/T1B6JK89H-F8S833K41/download/messages_image_1172068937_.png",
+        "thumb_64":
+          "https://files.slack.com/files-tmb/T1B6JK89H-F8S833K41-08d11b45af/messages_image_1172068937__64.png",
+        "thumb_80":
+          "https://files.slack.com/files-tmb/T1B6JK89H-F8S833K41-08d11b45af/messages_image_1172068937__80.png",
+        "thumb_360":
+          "https://files.slack.com/files-tmb/T1B6JK89H-F8S833K41-08d11b45af/messages_image_1172068937__360.png",
+        "thumb_360_w": 242,
+        "thumb_360_h": 360,
+        "thumb_480":
+          "https://files.slack.com/files-tmb/T1B6JK89H-F8S833K41-08d11b45af/messages_image_1172068937__480.png",
+        "thumb_480_w": 323,
+        "thumb_480_h": 480,
+        "thumb_160":
+          "https://files.slack.com/files-tmb/T1B6JK89H-F8S833K41-08d11b45af/messages_image_1172068937__160.png",
+        "thumb_720":
+          "https://files.slack.com/files-tmb/T1B6JK89H-F8S833K41-08d11b45af/messages_image_1172068937__720.png",
+        "thumb_720_w": 484,
+        "thumb_720_h": 720,
+        "thumb_800":
+          "https://files.slack.com/files-tmb/T1B6JK89H-F8S833K41-08d11b45af/messages_image_1172068937__800.png",
+        "thumb_800_w": 538,
+        "thumb_800_h": 800,
+        "thumb_960":
+          "https://files.slack.com/files-tmb/T1B6JK89H-F8S833K41-08d11b45af/messages_image_1172068937__960.png",
+        "thumb_960_w": 645,
+        "thumb_960_h": 960,
+        "thumb_1024":
+          "https://files.slack.com/files-tmb/T1B6JK89H-F8S833K41-08d11b45af/messages_image_1172068937__1024.png",
+        "thumb_1024_w": 688,
+        "thumb_1024_h": 1024,
+        "image_exif_rotation": 1,
+        "original_w": 766,
+        "original_h": 1140,
+        "permalink":
+          "https://loftph.slack.com/files/U1B8JT6V6/F8S833K41/messages_image_1172068937_.png",
+        "permalink_public":
+          "https://slack-files.com/T1B6JK89H-F8S833K41-8ef187345a",
+        "channels": ["C1B7RBXC6"],
+        "groups": [],
+        "ims": [],
+        "comments_count": 1,
+        "initial_comment": {
+          "id": "Fc8S834G2D",
+          "created": 1515999680,
+          "timestamp": 1515999680,
+          "user": "U1B8JT6V6",
+          "is_intro": true,
+          "comment": "Thanks <@U1B7TDK7E>"
+        },
+        "reactions": [
+          {
+            "name": "grin",
+            "users": ["U1B7TDK7E", "U870XLJRK", "U8QFMFHGS"],
+            "count": 3
+          },
+          {
+            "name": "beer",
+            "users": ["U4QFL2HPS"],
+            "count": 1
+          }
+        ]
+      },
+      "user": "U1B8JT6V6",
+      "upload": true,
+      "display_as_bot": false,
+      "username": "tiger",
+      "bot_id": null,
+      "ts": "1515999684.000187"
+    },
+    {
+      "type": "message",
+      "user": "U8QG6P52Q",
+      "text":
+        "Welcome <@U8RQSKLSG>! we're happy to get you onboard here at Loft. :tada::raised_hands:",
+      "ts": "1515739748.000119",
+      "reactions": [
+        {
+          "name": "blush",
+          "users": ["U8RQSKLSG"],
+          "count": 1
+        },
+        {
+          "name": "ok_hand",
+          "users": ["U1B8A6P0R", "U1B8JT6V6"],
+          "count": 2
+        }
+      ]
+    },
+    {
+      "user": "U8RQSKLSG",
+      "text": "<@U8RQSKLSG> has joined the channel",
+      "type": "message",
+      "subtype": "channel_join",
+      "ts": "1515736160.000028"
+    },
+    {
+      "user": "U8QFMFHGS",
+      "text": "<@U8QFMFHGS> has joined the channel",
+      "type": "message",
+      "subtype": "channel_join",
+      "ts": "1515557977.000045"
+    },
+    {
+      "user": "U8QG6P52Q",
+      "text": "<@U8QG6P52Q> has joined the channel",
+      "type": "message",
+      "subtype": "channel_join",
+      "ts": "1515557128.000222"
+    },
+    {
+      "type": "message",
+      "user": "U1BCCQ2AY",
+      "text": ":))",
+      "ts": "1515047622.000125"
+    },
+    {
+      "type": "message",
+      "user": "U1BCCQ2AY",
+      "text": "syobe.",
+      "ts": "1515047611.000079"
+    },
+    {
+      "type": "message",
+      "user": "U1B7TDK7E",
+      "text": "Thank you, ate Chan!",
+      "ts": "1515047484.000099"
+    },
+    {
+      "type": "message",
+      "user": "U1BCCQ2AY",
+      "text": "another feedback has been posted.",
+      "ts": "1515047153.000194"
+    },
+    {
+      "type": "message",
+      "user": "U1B7TDK7E",
+      "text":
+        "Great! <!here> check it out :slightly_smiling_face: Improvement points!",
+      "ts": "1515041791.000183"
+    },
+    {
+      "type": "message",
+      "user": "U1BCCQ2AY",
+      "text":
+        "First feedback for Loft! :slightly_smiling_face:\n\n<https://loft.ph/user/community/categories/coworking/5a4d6f0fc5344225d139e4d4>",
+      "attachments": [
+        {
+          "title": "Loft",
+          "title_link":
+            "https://loft.ph/user/community/categories/coworking/5a4d6f0fc5344225d139e4d4",
+          "text": "Loft",
+          "fallback": "Loft",
+          "from_url":
+            "https://loft.ph/user/community/categories/coworking/5a4d6f0fc5344225d139e4d4",
+          "thumb_url": "https://loft.ph/assets/img/favicons/favicon.png",
+          "thumb_width": 32,
+          "thumb_height": 32,
+          "service_icon":
+            "https://loft.ph/assets/img/favicons/apple-touch-icon-180x180.png",
+          "service_name": "loft.ph",
+          "id": 1
+        }
+      ],
+      "ts": "1515040221.000024"
+    },
+    {
+      "type": "message",
+      "user": "U83DZ0JSG",
+      "text": "You look very cozy :grin:",
+      "ts": "1515033351.000148"
+    },
+    {
+      "type": "message",
+      "user": "U1B7TDK7E",
+      "text": "Weather is nice at The Wall today :joy:",
+      "ts": "1515033309.000262"
+    },
+    {
+      "type": "message",
+      "user": "U83DZ0JSG",
+      "text": "Good morning! :heart:",
+      "ts": "1515033282.000065"
+    },
+    {
+      "type": "message",
+      "user": "U1B7TDK7E",
+      "text": "Good morning Lofters! :dancer:",
+      "ts": "1515033268.000027"
+    },
+    {
+      "type": "message",
+      "user": "U75UNTV1U",
+      "text": "Hello :smile:",
+      "ts": "1513654819.000028"
+    },
+    {
+      "type": "message",
+      "user": "U76BGGZ4J",
+      "text": "Test shout out for <@U75UNTV1U> :thumbsup_all:",
+      "ts": "1513654042.000022"
+    },
+    {
+      "type": "message",
+      "user": "U75UNTV1U",
+      "text": "This is a test :smile:",
+      "ts": "1513647367.000069"
+    },
+    {
+      "user": "U8F2B6CRH",
+      "text": "<@U8F2B6CRH> has joined the channel",
+      "type": "message",
+      "subtype": "channel_join",
+      "ts": "1513309441.000234"
+    },
+    {
+      "user": "U8EDLEPL3",
+      "text": "<@U8EDLEPL3> has joined the channel",
+      "type": "message",
+      "subtype": "channel_join",
+      "ts": "1513228010.000010"
+    },
+    {
+      "type": "message",
+      "user": "U1B8A6P0R",
+      "text": "Good Morning Lofters :office: ",
+      "ts": "1513123716.000243",
+      "reactions": [
+        {
+          "name": "sunny",
+          "users": ["U1B8JJX42"],
+          "count": 1
+        },
+        {
+          "name": "grinning",
+          "users": ["U870XLJRK", "U1BT6RPFF"],
+          "count": 2
+        }
+      ]
+    },
+    {
+      "user": "U8CHU6VEU",
+      "text": "<@U8CHU6VEU> has joined the channel",
+      "type": "message",
+      "subtype": "channel_join",
+      "ts": "1513066153.000117"
+    },
+    {
+      "type": "message",
+      "user": "U885F9FEW",
+      "text": ":+1:",
+      "ts": "1512104888.000003"
+    },
+    {
+      "type": "message",
+      "user": "U1BT6RPFF",
+      "text": "<@U885F9FEW>",
+      "ts": "1512104854.000213"
+    },
+    {
+      "user": "U885F9FEW",
+      "text": "<@U885F9FEW> has joined the channel",
+      "type": "message",
+      "subtype": "channel_join",
+      "ts": "1512104834.000039"
+    },
+    {
+      "user": "U890ZH754",
+      "text": "<@U890ZH754> has joined the channel",
+      "type": "message",
+      "subtype": "channel_join",
+      "ts": "1512097769.000047"
+    },
+    {
+      "user": "U87E949K2",
+      "text": "<@U87E949K2> has joined the channel",
+      "type": "message",
+      "subtype": "channel_join",
+      "ts": "1512093490.000188"
+    },
+    {
+      "user": "U86UZ055Y",
+      "text": "<@U86UZ055Y> has joined the channel",
+      "type": "message",
+      "subtype": "channel_join",
+      "ts": "1511944318.000164"
+    },
+    {
+      "user": "U86V3F7T6",
+      "text": "<@U86V3F7T6> has joined the channel",
+      "type": "message",
+      "subtype": "channel_join",
+      "ts": "1511934989.000146"
+    },
+    {
+      "user": "U870XLJRK",
+      "text": "<@U870XLJRK> has joined the channel",
+      "type": "message",
+      "subtype": "channel_join",
+      "ts": "1511920588.000076"
+    },
+    {
+      "user": "U8498M9R6",
+      "text": "<@U8498M9R6> has joined the channel",
+      "type": "message",
+      "subtype": "channel_join",
+      "ts": "1511490442.000090"
+    },
+    {
+      "user": "U83DZ0JSG",
+      "topic": "Community announcements and work related matters.",
+      "text":
+        "<@U83DZ0JSG> set the channel topic: Community announcements and work related matters.",
+      "type": "message",
+      "subtype": "channel_topic",
+      "ts": "1511231170.000074"
+    },
+    {
+      "user": "U849CJP4N",
+      "text": "<@U849CJP4N> has joined the channel",
+      "type": "message",
+      "subtype": "channel_join",
+      "ts": "1511230747.000089"
+    },
+    {
+      "user": "U83H83A2H",
+      "text": "<@U83H83A2H> has joined the channel",
+      "type": "message",
+      "subtype": "channel_join",
+      "ts": "1511230708.000137"
+    },
+    {
+      "user": "U83AMKUSF",
+      "text": "<@U83AMKUSF> has joined the channel",
+      "type": "message",
+      "subtype": "channel_join",
+      "ts": "1511228969.000028"
+    },
+    {
+      "user": "U83DZ0JSG",
+      "text": "<@U83DZ0JSG> has joined the channel",
+      "type": "message",
+      "subtype": "channel_join",
+      "ts": "1511227666.000190"
+    },
+    {
+      "user": "U75N32CAC",
+      "text": "<@U75N32CAC> has joined the channel",
+      "type": "message",
+      "subtype": "channel_join",
+      "ts": "1505949866.000186"
+    },
+    {
+      "user": "U76BGGZ4J",
+      "text": "<@U76BGGZ4J> has joined the channel",
+      "type": "message",
+      "subtype": "channel_join",
+      "ts": "1505948098.000156"
+    },
+    {
+      "user": "U75MN3MG8",
+      "text": "<@U75MN3MG8> has joined the channel",
+      "type": "message",
+      "subtype": "channel_join",
+      "ts": "1505947356.000119"
+    },
+    {
+      "user": "U75UNTV1U",
+      "text": "<@U75UNTV1U> has joined the channel",
+      "type": "message",
+      "subtype": "channel_join",
+      "ts": "1505779309.000014"
+    },
+    {
+      "type": "message",
+      "subtype": "pinned_item",
+      "user": "U1B8JT6V6",
+      "item_type": "C",
+      "ts": "1496441831.735836"
+    },
+    {
+      "type": "message",
+      "subtype": "pinned_item",
+      "user": "U1B8JT6V6",
+      "item_type": "C",
+      "ts": "1495868500.516230"
+    },
+    {
+      "type": "message",
+      "subtype": "pinned_item",
+      "user": "U1B8JT6V6",
+      "item_type": "C",
+      "ts": "1471410532.000004"
+    },
+    {
+      "type": "message",
+      "subtype": "pinned_item",
+      "user": "U1B8JT6V6",
+      "item_type": "C",
+      "ts": "1470829360.000004"
+    },
+    {
+      "type": "message",
+      "subtype": "pinned_item",
+      "user": "U1B8A6P0R",
+      "item_type": "F",
+      "text":
+        "<@U1B8A6P0R> pinned <@U1B8JT6V6>’s Image <https://loftph.slack.com/files/U1B8JT6V6/F1TNHMQNN/interesting.jpg|Interesting> to this channel.",
+      "item": {
+        "id": "F1TNHMQNN",
+        "created": 1469073624,
+        "timestamp": 1469073624,
+        "name": "Interesting.jpg",
+        "title": "Interesting",
+        "mimetype": "image/jpeg",
+        "filetype": "jpg",
+        "pretty_type": "JPEG",
+        "user": "U1B8JT6V6",
+        "editable": false,
+        "size": 109296,
+        "mode": "hosted",
+        "is_external": false,
+        "external_type": "",
+        "is_public": true,
+        "public_url_shared": false,
+        "display_as_bot": false,
+        "username": "",
+        "url_private":
+          "https://files.slack.com/files-pri/T1B6JK89H-F1TNHMQNN/interesting.jpg",
+        "url_private_download":
+          "https://files.slack.com/files-pri/T1B6JK89H-F1TNHMQNN/download/interesting.jpg",
+        "thumb_64":
+          "https://files.slack.com/files-tmb/T1B6JK89H-F1TNHMQNN-6f37a9e31c/interesting_64.jpg",
+        "thumb_80":
+          "https://files.slack.com/files-tmb/T1B6JK89H-F1TNHMQNN-6f37a9e31c/interesting_80.jpg",
+        "thumb_360":
+          "https://files.slack.com/files-tmb/T1B6JK89H-F1TNHMQNN-6f37a9e31c/interesting_360.jpg",
+        "thumb_360_w": 360,
+        "thumb_360_h": 360,
+        "thumb_480":
+          "https://files.slack.com/files-tmb/T1B6JK89H-F1TNHMQNN-6f37a9e31c/interesting_480.jpg",
+        "thumb_480_w": 480,
+        "thumb_480_h": 480,
+        "thumb_160":
+          "https://files.slack.com/files-tmb/T1B6JK89H-F1TNHMQNN-6f37a9e31c/interesting_160.jpg",
+        "thumb_720":
+          "https://files.slack.com/files-tmb/T1B6JK89H-F1TNHMQNN-6f37a9e31c/interesting_720.jpg",
+        "thumb_720_w": 720,
+        "thumb_720_h": 720,
+        "image_exif_rotation": 1,
+        "original_w": 800,
+        "original_h": 800,
+        "permalink":
+          "https://loftph.slack.com/files/U1B8JT6V6/F1TNHMQNN/interesting.jpg",
+        "permalink_public":
+          "https://slack-files.com/T1B6JK89H-F1TNHMQNN-2b858ac69b",
+        "channels": ["C1B7RBXC6"],
+        "groups": [],
+        "ims": [],
+        "comments_count": 1,
+        "initial_comment": {
+          "id": "Fc1TLLJ5V1",
+          "created": 1469073624,
+          "timestamp": 1469073624,
+          "user": "U1B8JT6V6",
+          "is_intro": true,
+          "comment":
+            "Especially since we own <http://launchpad.ph|launchpad.ph> :stuck_out_tongue_winking_eye:"
+        },
+        "pinned_to": ["C1B7RBXC6"],
+        "reactions": [
+          {
+            "name": "smirk",
+            "users": ["U1B9VMLG7"],
+            "count": 1
+          }
+        ]
+      },
+      "ts": "1469146119.000002"
+    },
+    {
+      "user": "U1BT6RPFF",
+      "type": "message",
+      "subtype": "channel_join",
+      "text": "<@U1BT6RPFF> has joined the channel",
+      "ts": "1464246008.000002"
+    },
+    {
+      "user": "U1BCCQ2AY",
+      "type": "message",
+      "subtype": "channel_join",
+      "text": "<@U1BCCQ2AY> has joined the channel",
+      "ts": "1464108758.000002"
+    },
+    {
+      "user": "U1B9VMLG7",
+      "type": "message",
+      "subtype": "channel_join",
+      "text": "<@U1B9VMLG7> has joined the channel",
+      "ts": "1464090393.000002"
+    },
+    {
+      "user": "U1B8Y0SBS",
+      "type": "message",
+      "subtype": "channel_join",
+      "text": "<@U1B8Y0SBS> has joined the channel",
+      "ts": "1464081935.000002"
+    },
+    {
+      "user": "U1B8JT6V6",
+      "type": "message",
+      "subtype": "channel_join",
+      "text": "<@U1B8JT6V6> has joined the channel",
+      "ts": "1464078357.000007"
+    },
+    {
+      "user": "U1B7XHHBN",
+      "type": "message",
+      "subtype": "channel_join",
+      "text": "<@U1B7XHHBN> has joined the channel",
+      "ts": "1464075662.000006"
+    },
+    {
+      "user": "U1B8JJX42",
+      "type": "message",
+      "subtype": "channel_join",
+      "text": "<@U1B8JJX42> has joined the channel",
+      "ts": "1464075545.000005"
+    },
+    {
+      "user": "U1B8A6P0R",
+      "type": "message",
+      "subtype": "channel_join",
+      "text": "<@U1B8A6P0R> has joined the channel",
+      "ts": "1464074795.000004"
+    },
+    {
+      "user": "U1B7TDK7E",
+      "type": "message",
+      "subtype": "channel_join",
+      "text": "<@U1B7TDK7E> has joined the channel",
+      "ts": "1464074459.000003"
+    },
+    {
+      "user": "U1B6NR9MH",
+      "type": "message",
+      "subtype": "channel_join",
+      "text": "<@U1B6NR9MH> has joined the channel",
+      "ts": "1464074401.000002"
+    },
+    {
+      "user": "U1B7Z9L1M",
+      "type": "message",
+      "subtype": "channel_join",
+      "text": "<@U1B7Z9L1M> has joined the channel",
+      "ts": "1464072913.051093"
+    }
+  ],
+  "has_more": false
+}

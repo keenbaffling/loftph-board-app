@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import Slack from 'slack';
-import axios from 'axios';
+// import axios from 'axios';
 import _ from 'lodash';
 import moment from 'moment';
+import slackdown from 'slackdown';
+import EmojiConvertor from 'emoji-js';
 
 // import List from './List';
 
@@ -12,6 +14,13 @@ const SLACK_BOT_TOKEN = process.env.REACT_APP_SLACK_BOT_TOKEN;
 const SLACK_CHANNEL = process.env.REACT_APP_SLACK_CHANNEL;
 
 const bot = new Slack({ token: SLACK_BOT_TOKEN });
+const emoji = new EmojiConvertor();
+emoji.replace_mode = 'img';
+emoji.text_mode = false;
+emoji.img_set = 'apple';
+emoji.img_sets.apple.path = require('emoji-datasource');
+emoji.img_sets.apple.sheet = require('emoji-datasource/sheet_apple_64.png');
+emoji.use_sheet = true;
 
 export default class extends Component {
   state = {
@@ -24,9 +33,9 @@ export default class extends Component {
     message: null
   };
 
-  componentDidMount() {
-    this.rtmConnect();
-    // this.rtmStart();
+  componentWillMount() {
+    // this.rtmConnect();
+    this.rtmStart();
     this.getHistory(SLACK_CHANNEL);
     // this.getChannelInfo(SLACK_CHANNEL);
     this.getUsersList();
@@ -34,7 +43,8 @@ export default class extends Component {
   }
 
   getHistory = channel => {
-    bot.channels
+    // TODO: Change to channel #general
+    bot.conversations
       .history({
         channel,
         count: 30
@@ -66,7 +76,10 @@ export default class extends Component {
     bot.emoji
       .list()
       .then(res => res.emoji)
-      .then(emoji => this.setState({ emoji }))
+      .then(emoji => {
+        this.setState({ emoji });
+        return emoji;
+      })
       .catch(console.error);
   };
 
@@ -86,46 +99,106 @@ export default class extends Component {
       .catch(console.error);
   };
 
-  getUser = userId => _.filter(this.state.members, ['id', userId])[0];
+  handleUserInfo = userId => _.filter(this.state.members, ['id', userId])[0];
 
-  handleUserTag = userTag => {
-    let str = '';
-    let user = this.getUser(userTag.substr(2, 9));
+  parseUserTag = str => {
+    let taggedUsers = str.match(/(<@.+>)/g);
 
-    if (user) {
-      str = `<a className="slack__text-highlight" href="https://loftph.slack.com/team/${
-        user.id
-      }" target="_blank">@${user.profile.display_name}</a>`;
+    if (taggedUsers && taggedUsers.length) {
+      _.forEach(taggedUsers, (user, index) => {
+        let userData = this.handleUserInfo(user.substr(2, 9));
+        let strTemplate = `https://loftph.slack.com/team/${userData.id}|@${
+          userData.profile.display_name || userData.profile.real_name_normalized
+        }`;
+
+        str = str.replace(`@${userData.id}`, strTemplate);
+      });
     }
 
     return str;
   };
 
-  formatMessage = text => {
-    text = text.toString();
-    let newText = '';
-    let taggedUsers = text.match(/<@\w+>/g);
+  parseChannelTag = str => {
+    let taggedChannels = str.match(/(<#.+>)/g);
 
-    if (taggedUsers && taggedUsers.length) {
-      // Replace user tags
-      _.forEach(taggedUsers, (user, index) => {
-        if (newText === '') {
-          newText = text.replace(user, this.handleUserTag(user));
-        } else {
-          newText = newText.replace(user, this.handleUserTag(user));
-        }
+    if (taggedChannels && taggedChannels.length) {
+      _.forEach(taggedChannels, (channel, index) => {
+        let id = channel.substr(2, 9);
+        let strTemplate = `https://loftph.slack.com/archives/${id}`;
+
+        str = str.replace(`#${id}`, strTemplate);
       });
-    } else {
-      newText = text;
     }
 
-    // Replace img
+    return str;
+  };
 
-    return newText;
+  parseAttachments = str => {
+    let newStr = '';
+
+    // console.log(str.split('|'));
+
+    newStr = str;
+
+    return newStr;
+  };
+
+  matchEmoji = colonFormat => {
+    return _.pick(this.state.emoji, [colonFormat.replace(/:/g, '')]);
+  };
+
+  parseCustomEmoji = str => {
+    let regex = /(:[a-zA-Z0-9-_]+:)/g;
+
+    _.replace(str, regex, string => {
+      _.forEach(this.matchEmoji(string), (value, key) => {
+        str = str.replace(
+          string,
+          `<span class="emoji-outer emoji-sizer"><span class="emoji-inner" style="background-image: url(${value}); background-size: contain;"></span></span>`
+        );
+      });
+    });
+
+    return str;
+  };
+
+  parseEmoji = str => {
+    str = emoji.replace_colons(str);
+    str = this.parseCustomEmoji(str);
+
+    return str;
+  };
+
+  formatMessage = str => {
+    str = str.toString();
+
+    // Replace user tags
+    str = this.parseUserTag(str);
+
+    // Replace channel tags
+    str = this.parseChannelTag(str);
+
+    // Parse markdown tags
+    str = slackdown.parse(str);
+
+    // Parse emojis
+    str = this.parseEmoji(str);
+
+    // Replace new lines
+    str = str.replace(/\n/g, '<br>');
+
+    // Replace attachments
+    // str = this.parseAttachments(str);
+
+    return str;
   };
 
   handleRTM = () => {
     const ws = new WebSocket(this.state.url);
+
+    ws.onopen = event => {
+      this.setState({ isLoading: false });
+    };
 
     ws.onmessage = event => {
       const data = JSON.parse(event.data);
@@ -133,7 +206,7 @@ export default class extends Component {
 
       switch (data.type) {
         case 'message':
-          if (data.channel === SLACK_CHANNEL && !!data.subtype === false) {
+          if (data.channel === SLACK_CHANNEL) {
             history.unshift(data);
             this.setState({ history });
           }
@@ -142,8 +215,6 @@ export default class extends Component {
         default:
           break;
       }
-
-      this.setState({ isLoading: false });
     };
   };
 
@@ -158,30 +229,36 @@ export default class extends Component {
       <React.Fragment>
         {history &&
           history.map((item, index) => {
-            let user = this.getUser(item.user);
+            let user = this.handleUserInfo(item.user);
             let profile = user && user.profile;
-            let timestamp = new Date(item.ts * 1000).toLocaleString();
+            let timestamp = new Date(item.ts * 1000).toUTCString();
 
             return (
-              <div className="slack__message" key={index}>
-                <div className="slack__wrap">
+              <div className="slack__item" key={index}>
+                <div className="slack__item-wrap">
                   <div className="slack__gutter">
-                    <a href="/" className="slack__avatar">
+                    <a
+                      href={`https://loftph.slack.com/team/${user.id}`}
+                      className="slack__avatar"
+                    >
                       <img
-                        className="slac__avatar-img"
+                        className="slack__avatar-img"
                         src={profile.image_192}
-                        alt={profile.display_name}
+                        alt={profile.display_name || profile.real_name_normalized}
                       />
                     </a>
                   </div>
                   <div className="slack__message-content">
                     <div className="slack__message-header">
                       <span className="slack__message-sender">
-                        <a href="/" className="slack__message-sender-link">
-                          {profile.display_name}
+                        <a
+                          href={`https://loftph.slack.com/team/${user.id}`}
+                          className="slack__message-sender-link"
+                        >
+                          {profile.display_name || profile.real_name_normalized}
                         </a>
                       </span>
-                      <span href="#" className="slack__timestamp">
+                      <span className="slack__timestamp">
                         <span className="slack__timestamp-label">
                           {moment(timestamp).format('LT')}
                         </span>

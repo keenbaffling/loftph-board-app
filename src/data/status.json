@@ -1,0 +1,14 @@
+[
+  {
+    "title": "Hot Desks",
+    "total": "50",
+    "occupied": "8",
+    "id": 1
+  },
+  {
+    "title": "Conference Rooms",
+    "total": "4",
+    "occupied": "2",
+    "id": 2
+  }
+]
