@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import Slack from 'slack';
-// import axios from 'axios';
 import _ from 'lodash';
 import moment from 'moment';
 import slackdown from 'slackdown';
@@ -13,6 +11,7 @@ const SLACK_BOT_TOKEN = process.env.REACT_APP_SLACK_BOT_TOKEN;
 // const SLACK_CLIENT_SECRET = process.env.REACT_APP_SLACK_CLIENT_SECRET;
 const SLACK_CHANNEL = process.env.REACT_APP_SLACK_CHANNEL;
 
+const Slack = require('slack');
 const bot = new Slack({ token: SLACK_BOT_TOKEN });
 const emoji = new EmojiConvertor();
 emoji.replace_mode = 'img';
