@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@slack/client": "^3.16.0",
     "autoprefixer": "7.1.6",
     "axios": "^0.17.1",
     "babel-core": "6.26.0",
@@ -45,7 +46,6 @@
     "react-motion": "^0.5.2",
     "react-transition-group": "^2.2.1",
     "sass-loader": "^6.0.6",
-    "slack": "^10.1.1",
     "slackdown": "^0.1.1",
     "socket.io-client": "^2.0.4",
     "style-loader": "0.19.0",

@@ -3,6 +3,7 @@ import _ from 'lodash';
 import moment from 'moment';
 import slackdown from 'slackdown';
 import EmojiConvertor from 'emoji-js';
+// import { RtmClient, CLIENT_EVENTS } from '@slack/client';
 
 // import List from './List';
 
@@ -11,8 +12,18 @@ const SLACK_BOT_TOKEN = process.env.REACT_APP_SLACK_BOT_TOKEN;
 // const SLACK_CLIENT_SECRET = process.env.REACT_APP_SLACK_CLIENT_SECRET;
 const SLACK_CHANNEL = process.env.REACT_APP_SLACK_CHANNEL;
 
-const Slack = require('slack');
-const bot = new Slack({ token: SLACK_BOT_TOKEN });
+// const { RtmClient } = require('@slack/client');
+// const appData = {};
+// const rtm = new RtmClient(SLACK_BOT_TOKEN, {
+//   dataStore: false,
+//   useRtmConnect: true
+// });
+
+// rtm.on(CLIENT_EVENTS.RTM.AUTHENTICATED, connectData => {
+//   appData.selfId = connectData.self.id;
+//   console.log(`Logged in as ${appData.selfId} of team ${connectData.team.id}`);
+// });
+
 const emoji = new EmojiConvertor();
 emoji.replace_mode = 'img';
 emoji.text_mode = false;
@@ -34,68 +45,72 @@ export default class extends Component {
 
   componentWillMount() {
     // this.rtmConnect();
-    this.rtmStart();
-    this.getHistory(SLACK_CHANNEL);
-    this.getChannelInfo(SLACK_CHANNEL);
-    this.getUsersList();
-    this.getEmoji();
+    // this.rtmStart();
+    // this.getHistory(SLACK_CHANNEL);
+    // this.getChannelInfo(SLACK_CHANNEL);
+    // this.getUsersList();
+    // this.getEmoji();
   }
 
-  getHistory = channel => {
-    // TODO: Change to channel #general
-    bot.channels
-      .history({
-        channel,
-        count: 30
-      })
-      .then(res => res.messages)
-      .then(history => this.setState({ history }))
-      .catch(console.error);
-  };
+  // getHistory = channel => {
+  //   // TODO: Change to channel #general
+  //   bot.channels
+  //     .history({
+  //       channel,
+  //       count: 30
+  //     })
+  //     .then(res => res.messages)
+  //     .then(history => this.setState({ history }))
+  //     .catch(console.error);
+  // };
 
-  getChannelInfo = channel => {
-    bot.channels
-      .info({
-        channel
-      })
-      .then(res => res.channel)
-      .then(channel => this.setState({ channel }))
-      .catch(console.error);
-  };
+  // getChannelInfo = channel => {
+  //   bot.channels
+  //     .info({
+  //       channel
+  //     })
+  //     .then(res => res.channel)
+  //     .then(channel => this.setState({ channel }))
+  //     .catch(console.error);
+  // };
 
-  getUsersList = () => {
-    bot.users
-      .list()
-      .then(res => res.members)
-      .then(members => this.setState({ members }))
-      .catch(console.error);
-  };
+  // getUsersList = () => {
+  //   bot.users
+  //     .list()
+  //     .then(res => res.members)
+  //     .then(members => this.setState({ members }))
+  //     .catch(console.error);
+  // };
 
-  getEmoji = () => {
-    bot.emoji
-      .list()
-      .then(res => res.emoji)
-      .then(emoji => {
-        this.setState({ emoji });
-        return emoji;
-      })
-      .catch(console.error);
-  };
+  // getEmoji = () => {
+  //   bot.emoji
+  //     .list()
+  //     .then(res => res.emoji)
+  //     .then(emoji => {
+  //       this.setState({ emoji });
+  //       return emoji;
+  //     })
+  //     .catch(console.error);
+  // };
 
-  rtmConnect = () => {
-    bot.rtm
-      .connect()
-      .then(res => this.setState({ url: res.url }))
-      .then(this.handleRTM)
-      .catch(console.error);
-  };
+  // rtmConnect = () => {
+  //   bot.rtm
+  //     .connect()
+  //     .then(res => this.setState({ url: res.url }))
+  //     .then(this.handleRTM)
+  //     .catch(console.error);
+  // };
 
   rtmStart = () => {
-    bot.rtm
-      .start()
-      .then(res => this.setState({ url: res.url }))
-      .then(this.handleRTM)
-      .catch(console.error);
+    // rtm.on(CLIENT_EVENTS.RTM.RTM_CONNECTION_OPENED, () => {
+    //   console.log('Ready');
+
+    // });
+    // bot.rtm
+    //   .start()
+    //   .then(res => this.setState({ url: res.url }))
+    //   .then(this.handleRTM)
+    //   .catch(console.error);
   };
 
   handleUserInfo = userId => _.filter(this.state.members, ['id', userId])[0];
