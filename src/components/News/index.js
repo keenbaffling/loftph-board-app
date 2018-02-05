@@ -17,10 +17,19 @@ export default class extends Component {
     this.handleItemAnimation();
   }
 
+  componentWillReceiveProps(nextProps) {
+    let { news } = nextProps;
+    this.setState({ news, isLoading: false });
+  }
+
   handleItemAnimation = () => {};
 
   render() {
-    const { news } = this.state;
+    const { isLoading, news } = this.state;
+
+    if (isLoading) {
+      return <div>Loading...</div>;
+    }
 
     return (
       <React.Fragment>

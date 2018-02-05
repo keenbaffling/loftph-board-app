@@ -43,6 +43,7 @@
     "react-dom": "^16.2.0",
     "react-helmet": "^5.2.0",
     "react-motion": "^0.5.2",
+    "react-transition-group": "^2.2.1",
     "sass-loader": "^6.0.6",
     "slack": "^10.1.1",
     "slackdown": "^0.1.1",

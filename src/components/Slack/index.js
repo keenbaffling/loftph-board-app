@@ -37,14 +37,14 @@ export default class extends Component {
     // this.rtmConnect();
     this.rtmStart();
     this.getHistory(SLACK_CHANNEL);
-    // this.getChannelInfo(SLACK_CHANNEL);
+    this.getChannelInfo(SLACK_CHANNEL);
     this.getUsersList();
     this.getEmoji();
   }
 
   getHistory = channel => {
     // TODO: Change to channel #general
-    bot.conversations
+    bot.channels
       .history({
         channel,
         count: 30
@@ -102,14 +102,15 @@ export default class extends Component {
   handleUserInfo = userId => _.filter(this.state.members, ['id', userId])[0];
 
   parseUserTag = str => {
-    let taggedUsers = str.match(/(<@.+>)/g);
+    let taggedUsers = str.match(/(<@\w{2,9}>)/g);
 
     if (taggedUsers && taggedUsers.length) {
       _.forEach(taggedUsers, (user, index) => {
         let userData = this.handleUserInfo(user.substr(2, 9));
-        let strTemplate = `https://loftph.slack.com/team/${userData.id}|@${
-          userData.profile.display_name || userData.profile.real_name_normalized
-        }`;
+        let strTemplate = `https://loftph.slack.com/team/${
+          userData.id
+        }|@${userData.profile.display_name ||
+          userData.profile.real_name_normalized}`;
 
         str = str.replace(`@${userData.id}`, strTemplate);
       });
@@ -119,7 +120,7 @@ export default class extends Component {
   };
 
   parseChannelTag = str => {
-    let taggedChannels = str.match(/(<#.+>)/g);
+    let taggedChannels = str.match(/(<#\w{2,9}>)/g);
 
     if (taggedChannels && taggedChannels.length) {
       _.forEach(taggedChannels, (channel, index) => {
@@ -184,11 +185,11 @@ export default class extends Component {
     // Parse emojis
     str = this.parseEmoji(str);
 
-    // Replace new lines
-    str = str.replace(/\n/g, '<br>');
-
     // Replace attachments
     // str = this.parseAttachments(str);
+
+    // Replace new lines
+    str = str.replace(/\n/g, '<br>');
 
     return str;
   };
@@ -218,64 +219,127 @@ export default class extends Component {
     };
   };
 
+  messageContent = item => {
+    switch (item.subtype) {
+      case 'file_share':
+        return (
+          <div className="slack__message-file">
+            <div className="slack__message-file slack__message-file--img">
+              <div
+                className="slack__message-file__meta"
+                dangerouslySetInnerHTML={{
+                  __html: this.formatMessage(item.text)
+                }}
+              />
+              <div className="slack__message-img__container">
+                <a
+                  href={item.file && item.file.permalink}
+                  className="slack__message-img__link"
+                >
+                  <img
+                    src={
+                      item.file.thumb_1024 ||
+                      item.file.thumb_960 ||
+                      item.file.thumb_800 ||
+                      item.file.thumb_720 ||
+                      item.file.thumb_480 ||
+                      item.file.thumb_360 ||
+                      item.file.thumb_160 ||
+                      item.file.thumb_80 ||
+                      item.file.thumb_64
+                    }
+                    alt={item.file.title}
+                    className="slack__message-img"
+                  />
+                </a>
+              </div>
+            </div>
+          </div>
+        );
+
+      default:
+        return (
+          <div
+            className="slack__message-body"
+            dangerouslySetInnerHTML={{
+              __html: this.formatMessage(item.text)
+            }}
+          />
+        );
+    }
+  };
+
   render() {
-    const { isLoading, history } = this.state;
+    const { isLoading, history, channel } = this.state;
 
     if (isLoading) {
       return <div>Loading...</div>;
     }
 
     return (
-      <React.Fragment>
-        {history &&
-          history.map((item, index) => {
-            let user = this.handleUserInfo(item.user);
-            let profile = user && user.profile;
-            let timestamp = new Date(item.ts * 1000).toUTCString();
+      <div className="slack">
+        <header className="slack__channel">
+          <h3 className="slack__channel-title">
+            {!channel.is_private && `#${channel.name}`}
+          </h3>
+        </header>
+        <div className="slack__list">
+          {history &&
+            history.map((item, index) => {
+              let user = this.handleUserInfo(item.user);
+              let profile = user && user.profile;
+              let timestamp = new Date(item.ts * 1000).toUTCString();
 
-            return (
-              <div className="slack__item" key={index}>
-                <div className="slack__item-wrap">
-                  <div className="slack__gutter">
-                    <a
-                      href={`https://loftph.slack.com/team/${user.id}`}
-                      className="slack__avatar"
-                    >
-                      <img
-                        className="slack__avatar-img"
-                        src={profile.image_192}
-                        alt={profile.display_name || profile.real_name_normalized}
-                      />
-                    </a>
-                  </div>
-                  <div className="slack__message-content">
-                    <div className="slack__message-header">
-                      <span className="slack__message-sender">
-                        <a
-                          href={`https://loftph.slack.com/team/${user.id}`}
-                          className="slack__message-sender-link"
-                        >
-                          {profile.display_name || profile.real_name_normalized}
-                        </a>
-                      </span>
-                      <span className="slack__timestamp">
-                        <span className="slack__timestamp-label">
-                          {moment(timestamp).format('LT')}
-                        </span>
-                      </span>
+              return (
+                <div className="slack__item" key={index}>
+                  <div className="slack__item-wrap">
+                    <div className="slack__gutter">
+                      <a
+                        href={`https://loftph.slack.com/team/${user.id}`}
+                        className="slack__avatar"
+                      >
+                        <img
+                          className="slack__avatar-img"
+                          src={profile.image_192}
+                          alt={
+                            profile.display_name || profile.real_name_normalized
+                          }
+                        />
+                      </a>
                     </div>
-                    <div
-                      className="slack__message-body"
-                      dangerouslySetInnerHTML={{
-                        __html: this.formatMessage(item.text)
-                      }}
-                    />
+                    <div className="slack__message-content">
+                      <div className="slack__message-header">
+                        <span className="slack__message-sender">
+                          <a
+                            href={`https://loftph.slack.com/team/${user.id}`}
+                            className="slack__message-sender-link"
+                          >
+                            {profile.display_name ||
+                              profile.real_name_normalized}
+                          </a>
+                        </span>
+                        <span className="slack__timestamp">
+                          <span className="slack__timestamp-label">
+                            {moment(timestamp).format('LT')}
+                          </span>
+                        </span>
+                      </div>
+                      {!item.subtype && (
+                        <div
+                          className="slack__message-body"
+                          dangerouslySetInnerHTML={{
+                            __html: this.formatMessage(item.text)
+                          }}
+                        />
+                      )}
+                      {item.subtype && this.messageContent(item)}
+                    </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
-      </React.Fragment>
+              );
+            })}
+        </div>
+      </div>
     );
   }
 }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Helmet } from 'react-helmet';
-import io from 'socket.io-client';
+import axios from 'axios';
 
 import '../../assets/fonts/gotham/stylesheet.css';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -10,24 +10,14 @@ import Status from '../Status';
 import News from '../News';
 import InSpace from '../InSpace';
 import Slack from '../Slack';
+import Products from '../Products';
 
 class App extends Component {
   state = {
     isLoading: true,
     url: 'http://localhost:3000',
     users: require('../../data/users.json'),
-    news: [
-      {
-        title: 'Loft Internal Dry Run',
-        date: '2017-12-12T00:00:00.000Z',
-        location: 'Loft Penthouse'
-      },
-      {
-        title: 'Loft Customer Dry Run',
-        date: '2017-12-13T00:00:00.000Z',
-        location: 'Loft Penthouse'
-      }
-    ],
+    news: [],
     status: [
       {
         title: 'Hot Desks',
@@ -57,51 +47,30 @@ class App extends Component {
   };
 
   componentDidMount() {
-    // this.handleUsers();
-    // this.handleNews();
-    // this.handleStatus();
-    // setTimeout(() => {
-    //   this.setState({ isLoading: false });
-    // }, 2000);
+    this.handleNews();
   }
 
   handleNews = () => {
-    const { url } = this.state;
-    const socket = io.connect(url);
-
-    socket.emit('request news', 1000);
-    socket.on('news', data => {
-      console.log(data);
-      // this.setState({ news: data });
-    });
+    axios('https://loft.ph/api/announcements')
+      .then(res => res.data)
+      .then(news => this.setState({ news }))
+      .then(this.setState({ isLoading: false }))
+      .catch(console.error);
   };
 
   handleStatus = () => {
-    const { url } = this.state;
-    const socket = io.connect(url.status);
-
-    socket.emit('request data', 1000);
-    socket.on('data', data => {
-      this.setState({ status: data });
-    });
-  };
-
-  handleUsers = () => {
-    const { url } = this.state;
-    const socket = io.connect(url.users);
-
-    socket.emit('request data', 1000);
-    socket.on('data', data => {
-      this.setState({ users: data });
-    });
+    axios('https://loft.ph/api/availabilityv2')
+      .then(res => res.data)
+      .then(status => this.setState({ status }))
+      .catch(console.error);
   };
 
   render() {
-    const { news, status, users } = this.state;
+    const { isLoading, news, status, users } = this.state;
 
-    // if (isLoading) {
-    //   return <div>Loading...</div>;
-    // }
+    if (isLoading) {
+      return <div>Loading...</div>;
+    }
 
     return (
       <React.Fragment>
@@ -111,8 +80,29 @@ class App extends Component {
         <div className="container-fluid">
           <div className="row">
             <div className="block block--top">
-              <div className="block__content block__content--1" style={{'display': 'none'}}>
-                Video goes here.
+              <div className="block__content block__content--1">
+                <div className="video--wrap">
+                  <div className="video__item">
+                    <iframe
+                      width="100%"
+                      src="https://www.youtube.com/embed/rj81emE48wI?autoplay=1&loop=1&mute=1&controls=0&showinfo=0&modestbranding=1"
+                      frameBorder="0"
+                      allow="encrypted-media"
+                      allowFullScreen
+                      title="test"
+                    />
+                  </div>
+                  <div className="video__item">
+                    <iframe
+                      width="100%"
+                      src="https://www.youtube.com/embed?listType=playlist&loop=1&modestbranding=1&controls=0&autoplay=1&showinfo=0&mute=1&list=PLNjtSuUpt389k5pEV8FvEWE5g7HvhghK9"
+                      frameBorder="0"
+                      allow="encrypted-media"
+                      allowFullScreen
+                      title="test"
+                    />
+                  </div>
+                </div>
               </div>
               <div className="block__content block__content--2">
                 <div className="col-md-6 slack--wrap">
@@ -121,6 +111,9 @@ class App extends Component {
                 <div className="col-md-6 news--wrap">
                   <News news={news} />
                 </div>
+              </div>
+              <div className="block__content block__content--3">
+                <Products />
               </div>
             </div>
             <div className="block block--bottom">

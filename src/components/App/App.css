@@ -108,6 +108,7 @@ p {
   left: 0;
   position: absolute;
   right: 0;
+  z-index: 1;
 }
 
 @media (min-width: 48em) {
@@ -130,6 +131,15 @@ p {
   -webkit-flex: 100%;
   -ms-flex: 100%;
   flex: 100%;
+  height: calc(100vh - 12rem);
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.block__content--1 {
+  height: 100%;
 }
 
 .block__content--2 {
@@ -137,6 +147,14 @@ p {
   -webkit-flex: 0 0 -webkit-calc(100vh - 12rem);
   -ms-flex: 0 0 calc(100vh - 12rem);
   flex: 0 0 calc(100vh - 12rem);
+}
+
+.block__content--3 {
+  align-items: center;
+  background-color: #efefef;
+  display: none;
+  justify-content: center;
+  z-index: 1;
 }
 
 /* END Block */
@@ -176,6 +194,7 @@ p {
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  padding: 0 1rem;
 }
 
 .status__item {
@@ -192,7 +211,7 @@ p {
   -webkit-flex: 50%;
   -ms-flex: 50%;
   flex: 50%;
-  margin-bottom: 0.5rem;
+  margin-bottom: .5rem;
   vertical-align: middle;
 }
 
@@ -205,6 +224,7 @@ p {
   -webkit-border-radius: 50%;
   border-radius: 50%;
   display: inline-block;
+  flex: 0 0 auto;
   font-family: 'Gotham', san-serif;
   font-weight: 500;
   height: 2.4rem;
@@ -226,11 +246,11 @@ p {
 
 .avatar__item {
   display: inline-block;
-  margin: 0 0.8rem;
+  margin: 0 .8rem;
 }
 
 .avatar__item-img {
-  border: 0.25rem solid #fff;
+  border: .3rem solid #fff;
   -webkit-border-radius: 50%;
   border-radius: 50%;
   width: 4.2rem;
@@ -242,7 +262,22 @@ p {
 
 .slack--wrap {
   background-color: #fff;
-  overflow-y: scroll;
+}
+
+.slack {
+  height: -webkit-calc(100% - 6rem);
+  height: calc(100% - 6rem);
+  margin: 3rem 0;
+}
+
+.slack__channel {
+  margin: 0 0 0 1.5rem;
+}
+
+.slack__list {
+  height: -webkit-calc(100% - 4rem);
+  height: calc(100% - 4rem);
+  overflow-y: auto;
 }
 
 .slack__item a:hover {
@@ -274,14 +309,15 @@ p {
 }
 
 .slack__avatar-img {
-  border-radius: 0.3rem;
+  -webkit-border-radius: .3rem;
+  border-radius: .3rem;
   height: 100%;
   width: 100%;
 }
 
 .slack__message-header {
   line-height: 1.5rem;
-  margin: 1rem 0 -0.5rem;
+  margin: 1rem 0 -.5rem;
 }
 
 .slack__message-sender {
@@ -298,23 +334,39 @@ p {
 }
 
 .slack__timestamp-label {
-  margin-left: 0.5rem;
+  margin-left: .5rem;
 }
 
 .slack__message-content {
-  margin: -1rem 2rem 0 10rem;
+  margin: -1rem 3rem 0 10rem;
 }
 
 .slack__message-content::before {
   content: '';
   display: block;
-  padding-top: 0.1rem;
+  padding-top: .1rem;
 }
 
-.slack__message-body {
-  margin: 1rem 0 -0.4rem;
+.slack__message-body,
+.slack__message-file {
+  margin: 1rem 0 -.4rem;
   width: 100%;
   word-wrap: break-word;
+}
+
+.slack__message-img__container {
+  margin: 1rem 0 -.4rem;
+}
+
+.slack__message-img {
+  -webkit-border-radius: .3rem;
+  border-radius: .3rem;
+  max-width: 100%;
+}
+
+.slack__message-img__link {
+  display: inline-block;
+  margin-right: auto;
 }
 
 /* END Slack */
@@ -375,8 +427,8 @@ p {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  font-size: 2.4rem;
-  margin-bottom: 2rem;
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
   padding: 2.5rem 5rem;
 }
 
@@ -394,7 +446,7 @@ p {
 
 .news__day {
   font-family: 'Gotham', sans-serif;
-  font-size: 4rem;
+  font-size: 3.2rem;
   line-height: 1;
 }
 
@@ -408,7 +460,7 @@ p {
 }
 
 .news__title {
-  font-size: 2.4rem;
+  font-size: 2rem;
 }
 
 .news__item--bg {
@@ -420,16 +472,71 @@ p {
 }
 
 .news__item--shadow {
-  /* box-shadow: 0 .1rem .2rem 0 rgba(0, 0, 0, 0.2); */
+  /* box-shadow: 0 .1rem .2rem 0 rgba(0, 0, 0, .2); */
 }
 
 /* END News */
+
+/* START Videos */
+
+.video--wrap {
+  left: 0;
+  position: absolute;
+  right: 0;
+}
+
+.video__item {
+  height: 0;
+  overflow: hidden;
+  padding-bottom: calc(100vh - 12rem);
+  position: relative;
+}
+
+.video__item iframe {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+@media (min-width: 75em) {
+  .video__item {
+    padding-bottom: 56.25%;
+  }
+}
+
+/* END Videos */
+
+/* START Products */
+
+.product {
+  height: 100%;
+  width: 100%;
+}
+
+.product__list {
+  display: flex;
+  flex-flow: row wrap;
+  height: 100%;
+  width: 100%;
+}
+
+.product__item {
+  flex: 1;
+}
+
+.product__item-img {
+  max-width: 100%;
+}
+
+/* END Products */
+
 
 /* START Emoji */
 
 span.emoji {
   display: -moz-inline-box;
-  -moz-box-orient: vertical;
   display: inline-block;
   vertical-align: baseline;
   *vertical-align: auto;
@@ -437,17 +544,19 @@ span.emoji {
   *display: inline;
   width: 2.4rem;
   height: 2.4rem;
+  -webkit-background-size: 2.4rem 2.4rem;
   background-size: 2.4rem;
   background-repeat: no-repeat;
-  text-indent: -9999px;
+  text-indent: -9999em;
   background-position: 50%, 50%;
+  -webkit-background-size: contain;
   background-size: contain;
 }
 
 span.emoji-sizer {
   line-height: 1;
   font-size: 1.6rem;
-  margin: -0.2rem 0;
+  margin: -.2rem 0;
 }
 
 span.emoji-outer {
@@ -462,7 +571,7 @@ span.emoji-outer {
 span.emoji-inner {
   display: -moz-inline-box;
   display: inline-block;
-  text-indent: -9999px;
+  text-indent: -9999em;
   width: 100%;
   height: 100%;
   vertical-align: baseline;
